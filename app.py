@@ -1,9 +1,19 @@
 import pickle
 from flask import Flask, request, jsonify,render_template
 import ml_functions
+import debug
+import os
+import sys
+import logging
+
+
 
 #Initialize the flask App
 app = Flask(__name__)
+
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
+
 model = pickle.load(open('model.pkl', 'rb'))
 
 #default page of our web-app
