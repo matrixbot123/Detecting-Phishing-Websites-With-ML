@@ -290,11 +290,13 @@ def features(url):
            data_set.append(1) 
 
     #15. Links_in_tags
+    l15 = 0
     i=0
     success =0
     if soup == -999:
         data_set.append(-1)
-        print(15)
+        l15 =1
+        print(115)
     else:
         for link in soup.find_all('link', href= True):
            dots=[x.start(0) for x in re.finditer('\.',link['href'])]
@@ -310,18 +312,19 @@ def features(url):
         try:
             percentage = success / float(i) * 100
         except:
+            l15 = 1
             data_set.append(1)
-            print(15)
-
-        if percentage < 17.0 :
-           data_set.append(1)
-           print(15)
-        elif((percentage >= 17.0) and (percentage < 81.0)) :
-           data_set.append(0)
-           print(15)
-        else :
-           data_set.append(-1)
-           print(15)
+            print(215)
+        if(l15 == 0):
+            if percentage < 17.0 :
+                data_set.append(1)
+                print(315)
+            elif((percentage >= 17.0) and (percentage < 81.0)) :
+                data_set.append(0)
+                print(415)
+            else :
+                data_set.append(-1)
+                print(515)
     
     #16. SFH
     flag = 1
