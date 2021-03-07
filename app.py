@@ -17,12 +17,12 @@ app.logger.setLevel(logging.ERROR)
 model = pickle.load(open('model.pkl', 'rb'))
 
 #default page of our web-app
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('index.html')
 
 #To use the predict button in our web-app
-@app.route('/predict',methods = ['POST'])
+@app.route('/predict', methods=['GET', 'POST'])
 def predict():
     
     url = request.form['url']
