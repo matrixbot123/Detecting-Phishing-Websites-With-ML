@@ -151,10 +151,12 @@ def features(url):
         print(9)
 
     # 10.Favicon
+    f10 =1
     try:
-
+        
         if soup == -999:
             data_set.append(-1)
+            f10 = 0
             print(10)
         else:
             try:
@@ -164,15 +166,23 @@ def features(url):
                         if url in head.link['href'] or len(dots) == 1 or domain in head.link['href']:
                             data_set.append(1)
                             print(10)
+                            f10 = 0
                             raise StopIteration
                         else:
                             data_set.append(-1)
                             print(10)
+                            f10 = 0
                             raise StopIteration
             except StopIteration:
                 pass
     except:
+        f10 =0
+        print(10)
         data_set.append(1)
+    if(f10 == 1):
+        print(10)
+        data_set.append(1)
+
 
     #11. port
     try:
